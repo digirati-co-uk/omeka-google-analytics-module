@@ -1,0 +1,32 @@
+{
+    "name": "digirati/omeka-google-analytics-module",
+    "license": "MIT",
+    "description": "Google analytics module for Omeka-S",
+    "type": "omeka-s-module",
+    "authors": [],
+    "require": {
+        "php": ">=7.0",
+    },
+    "require-dev": {
+        "stephenwf/omeka-s": "dev-develop",
+        "phpunit/phpunit": "~4.2",
+        "friendsofphp/php-cs-fixer": "^2.0",
+        "composer/composer": "^1.4"
+    },
+    "dev-repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/zerocrates/extract-tagged-strings.git"
+        },
+        {
+            "type": "vcs",
+            "url": "https://github.com/omeka-s-themes/default.git"
+        }
+    ],
+    "autoload": {
+        "psr-4": {"GoogleAnalytics\\": "src"}
+    },
+    "extra": {
+        "omeka-module-name": "GoogleAnalytics"
+    }
+}
