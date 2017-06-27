@@ -3,10 +3,14 @@
 namespace GoogleAnalytics;
 
 use GoogleAnalytics\Admin\ConfigurationForm;
+use GoogleAnalytics\Events\GoogleScriptTagEventListener;
 use Omeka\Module\AbstractModule;
 use Zend\Config\Factory;
+use Zend\EventManager\SharedEventManagerInterface;
 use Zend\Mvc\Controller\AbstractController;
 use Zend\View\Renderer\PhpRenderer;
+use Zend\View\View;
+use Zend\View\ViewEvent;
 
 class Module extends AbstractModule
 {
@@ -55,6 +59,12 @@ class Module extends AbstractModule
         $settings->set('google_analytics_key', $formData['google_analytics_key']);
 
         return true;
+    }
+
+    public function attachListeners(SharedEventManagerInterface $eventManager)
+    {
+        $subscriber = $this->getServiceLocator()->get(GoogleScriptTagEventListener::class);
+        $eventManager->attach(View::class, ViewEvent::EVENT_RENDERER_POST, $subscriber);
     }
 
 }
