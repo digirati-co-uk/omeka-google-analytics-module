@@ -12,7 +12,6 @@ use Zend\View\ViewEvent;
  */
 final class GoogleScriptTagEventListener
 {
-
     /**
      * Check if the passed {@link ModelInterface} is applicable for an analytics script tag to be inserted
      * into its content.

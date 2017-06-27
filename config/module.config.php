@@ -10,7 +10,7 @@ return [
                 return new GoogleScriptTagEventListener(
                     $container->get('Omeka\Settings')
                 );
-            }
-        ]
-    ]
+            },
+        ],
+    ],
 ];

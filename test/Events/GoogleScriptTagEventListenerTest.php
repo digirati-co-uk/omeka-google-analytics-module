@@ -46,6 +46,19 @@ class GoogleScriptTagEventListenerTest extends TestCase
         $this->assertEmpty($headScript->toString(), "<head> tag should not contain analytics code when no tracking id is present");
     }
 
+    public function testShouldNotAppearForInapplicableModel()
+    {
+        $headScript = new HeadScript();
+        $renderer = $this->getRendererMock($headScript);
+        $settings = $this->getSettingsMock(null);
+        $event = $this->getViewEventStub($renderer, '/child/site/page');
+
+        $listener = new GoogleScriptTagEventListener($settings);
+        $listener($event);
+
+        $this->assertEmpty($headScript->toString(), "<head> tag should not contain analytics code when no tracking id is present");
+    }
+
     /**
      * Verify that the tracking code is inserted correctly when a valid tracking ID exists and there is no reason
      * to otherwise prevent the tracking code from loading.
