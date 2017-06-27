@@ -6,7 +6,6 @@ use Zend\Form\Form;
 
 class ConfigurationForm extends Form
 {
-
     public function init()
     {
         $this->add([
@@ -14,9 +13,8 @@ class ConfigurationForm extends Form
             'name' => 'google_analytics_key',
             'options' => [
                 'label' => 'Google Analytics tracking code',
-                'info' => 'The tracking code to be used in Google Analytics tracking snippets'
+                'info' => 'The tracking code to be used in Google Analytics tracking snippets',
             ],
         ]);
     }
-
 }

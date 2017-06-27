@@ -36,7 +36,7 @@ class Module extends AbstractModule
         $form = new ConfigurationForm();
         $form->init();
         $form->setData([
-            'google_analytics_key' => $settings->get('google_analytics_key')
+            'google_analytics_key' => $settings->get('google_analytics_key'),
         ]);
 
         return $renderer->formCollection($form, false);
@@ -66,5 +66,4 @@ class Module extends AbstractModule
         $subscriber = $this->getServiceLocator()->get(GoogleScriptTagEventListener::class);
         $eventManager->attach(View::class, ViewEvent::EVENT_RENDERER_POST, $subscriber);
     }
-
 }
