@@ -5,6 +5,7 @@ namespace GoogleAnalytics\Events;
 use Omeka\Settings\Settings;
 use Zend\View\Model\ModelInterface;
 use Zend\View\Model\ViewModel;
+use Zend\View\Renderer\PhpRenderer;
 use Zend\View\ViewEvent;
 
 /**
@@ -13,14 +14,16 @@ use Zend\View\ViewEvent;
 final class GoogleScriptTagEventListener
 {
     /**
-     * Check if the passed {@link ModelInterface} is applicable for an analytics script tag to be inserted
-     * into its content.
+     * Check if the passed {@link ViewEvent} is applicable for an analytics script tag to be inserted
+     * into its root models content.
      *
-     * @param ModelInterface $model The model being tested.
-     * @return bool {@code true} iff this Model can have scripts appended to it.
+     * @param ViewEvent $event The event being tested.
+     * @return bool {@code true} iff this ViewEvent can have scripts appended to its ViewModel.
      */
-    public static function isApplicableModel(ModelInterface $model)
+    public static function isApplicableEvent(ViewEvent $event)
     {
+        $model = $event->getModel();
+
         if (!($model instanceof ViewModel)) {
             return false;
         }
@@ -28,6 +31,12 @@ final class GoogleScriptTagEventListener
         $children = $model->getChildren();
 
         if (count($children) !== 1) {
+            return false;
+        }
+
+        $renderer = $event->getRenderer();
+
+        if (!($renderer instanceof PhpRenderer)) {
             return false;
         }
 
@@ -51,16 +60,11 @@ final class GoogleScriptTagEventListener
     {
         $trackingCode = $this->settings->get('google_analytics_key');
 
-        if (empty($trackingCode)) {
+        if (empty($trackingCode) || !static::isApplicableEvent($event)) {
             return;
         }
 
         $model = $event->getModel();
-
-        if (!static::isApplicableModel($model)) {
-            return;
-        }
-
         $children = $model->getChildren();
         $child = current($children);
         $childTemplate = $child->getTemplate();

@@ -5,7 +5,9 @@ namespace GoogleAnalytics\Events;
 use Omeka\Settings\Settings;
 use Omeka\Test\TestCase;
 use Zend\View\Helper\HeadScript;
+use Zend\View\Model\JsonModel;
 use Zend\View\Model\ViewModel;
+use Zend\View\Renderer\JsonRenderer;
 use Zend\View\Renderer\PhpRenderer;
 use Zend\View\Renderer\RendererInterface;
 use Zend\View\ViewEvent;
@@ -46,17 +48,24 @@ class GoogleScriptTagEventListenerTest extends TestCase
         $this->assertEmpty($headScript->toString(), "<head> tag should not contain analytics code when no tracking id is present");
     }
 
-    public function testShouldNotAppearForInapplicableModel()
+    /**
+     * Tests that the listener has no interactions with the renderer when an inapplicable view event containing
+     * a JSON model is fired.
+     */
+    public function testShouldNotAppearForInapplicableJsonModel()
     {
-        $headScript = new HeadScript();
-        $renderer = $this->getRendererMock($headScript);
         $settings = $this->getSettingsMock(null);
-        $event = $this->getViewEventStub($renderer, '/child/site/page');
+        $renderer = $this->getMock(JsonRenderer::class, ['escapeJs', 'headScript']);
+        $event = new ViewEvent();
+        $event->setModel(new JsonModel());
+        $event->setRenderer(new JsonRenderer());
 
         $listener = new GoogleScriptTagEventListener($settings);
         $listener($event);
 
-        $this->assertEmpty($headScript->toString(), "<head> tag should not contain analytics code when no tracking id is present");
+        $renderer
+            ->expects($this->never())
+            ->method($this->anything());
     }
 
     /**
