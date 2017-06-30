@@ -13,3 +13,6 @@ install:
     - travis_retry composer install
 script:
     - ./vendor/bin/phpunit -c ./phpunit.xml -v
+after_script:
+    - chmod +x pushUpstreamIntoDockerImages.sh
+    - ./pushUpstreamIntoDockerImages.sh
