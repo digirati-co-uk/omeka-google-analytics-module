@@ -21,16 +21,6 @@ Installation via Zip file
 
 4.) Rename the folder from `omeka-google-analytics-module` to `GoogleAnalytics`
 
-Installation via Composer
-------------
-
-The preferred way to install this extension is through [composer](http://getcomposer.org/download/).
-
-
-```
-php composer.phar require digirati/omeka-google-analytics-module
-```
-
 
 
 Basic Usage
