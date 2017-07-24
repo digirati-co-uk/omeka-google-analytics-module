@@ -11,8 +11,10 @@ php:
 
 install:
     - travis_retry composer install
+    - composer require satooshi/php-coveralls:dev-master
 script:
-    - ./vendor/bin/phpunit -c ./phpunit.xml -v
+    - ./vendor/bin/phpunit -c ./phpunit.xml -v --coverage-clover ./tests/logs/clover.xml
 after_script:
+    - php vendor/bin/coveralls -v
     - chmod +x pushUpstreamIntoDockerImages.sh
     - ./pushUpstreamIntoDockerImages.sh
