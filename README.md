@@ -46,5 +46,4 @@ It will take approx 24-48 hours before you are able to see the results in your G
 
 Contributors
 ------------
-
-[TODO]
+![logo](https://www.llgc.org.uk/fileadmin/templates/assets-2015/img/logo-nlw-sgwar.svg "NLW Logo")
