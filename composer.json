@@ -5,7 +5,7 @@
     "type": "omeka-s-module",
     "authors": [],
     "require": {
-        "php": ">=7.0",
+        "php": ">=7.0"
     },
     "require-dev": {
         "stephenwf/omeka-s": "dev-develop",
