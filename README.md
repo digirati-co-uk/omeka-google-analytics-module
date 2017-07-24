@@ -5,7 +5,7 @@ An Omeka-S module which adds the required Javascript for Google Analytics tracki
 
 Currently supported versions of Omeka-S: 1.0.0beta1 - 1.0.0beta5
 
-[![Build Status](https://travis-ci.com/digirati-co-uk/omeka-google-analytics-module.svg?token=123456789&branch=master)](https://travis-ci.com/digirati-co-uk/omeka-google-analytics-module)
+[![Build Status](https://travis-ci.org/digirati-co-uk/omeka-google-analytics-module.svg?branch=master)](https://travis-ci.org/digirati-co-uk/omeka-google-analytics-module)
 
 Installation via Zip file
 ------------
