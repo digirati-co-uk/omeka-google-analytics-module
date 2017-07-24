@@ -6,6 +6,7 @@ An Omeka-S module which adds the required Javascript for Google Analytics tracki
 Currently supported versions of Omeka-S: 1.0.0beta1 - 1.0.0beta5
 
 [![Build Status](https://travis-ci.org/digirati-co-uk/omeka-google-analytics-module.svg?branch=master)](https://travis-ci.org/digirati-co-uk/omeka-google-analytics-module)
+[![Codacy Badge](https://api.codacy.com/project/badge/Grade/31df3685dbc3470696975940085eaa5f)](https://www.codacy.com/app/Digirati/omeka-google-analytics-module?utm_source=github.com&amp;utm_medium=referral&amp;utm_content=digirati-co-uk/omeka-google-analytics-module&amp;utm_campaign=Badge_Grade)
 
 Installation via Zip file
 ------------
