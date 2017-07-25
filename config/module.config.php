@@ -1,12 +1,11 @@
 <?php
 
 use GoogleAnalytics\Events\GoogleScriptTagEventListener;
-use Psr\Container\ContainerInterface;
 
 return [
     'service_manager' => [
         'factories' => [
-            GoogleScriptTagEventListener::class => function (ContainerInterface $container) {
+            GoogleScriptTagEventListener::class => function ($container) {
                 return new GoogleScriptTagEventListener(
                     $container->get('Omeka\Settings')
                 );
