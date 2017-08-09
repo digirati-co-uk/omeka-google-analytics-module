@@ -15,4 +15,7 @@
       "GoogleAnalytics\\": "src/"
     }
   }
+  "extra": {
+        "install-name": "GoogleAnalytics"
+    }
 }
