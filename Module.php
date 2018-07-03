@@ -18,12 +18,12 @@ class Module extends AbstractModule
 
     public function getConfig()
     {
-        if ($this->config !== null) {
+        if (null !== $this->config) {
             return $this->config;
         }
 
         $this->config = Factory::fromFiles(
-            glob(__DIR__ . '/config/*.config.*')
+            glob(__DIR__.'/config/*.config.*')
         );
 
         return $this->config;
@@ -52,6 +52,7 @@ class Module extends AbstractModule
 
         if (!$form->isValid()) {
             $controller->messenger()->addErrors($form->getMessages());
+
             return false;
         }
 
