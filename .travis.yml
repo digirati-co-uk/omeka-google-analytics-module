@@ -11,7 +11,7 @@ php:
 
 install:
     - travis_retry composer install
-    - composer require satooshi/php-coveralls:dev-master
+    - composer require php-coveralls/php-coveralls:dev-master
 script:
     - ./vendor/bin/phpunit -c ./phpunit.xml -v --coverage-clover ./tests/logs/clover.xml
 after_script:
