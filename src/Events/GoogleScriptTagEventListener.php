@@ -13,6 +13,11 @@ use Zend\View\ViewEvent;
 final class GoogleScriptTagEventListener
 {
     /**
+     * A flag indicating if the Google Analytics script tag has already been shown.
+     */
+    private $shown = false;
+    
+    /**
      * Check if the passed {@link ViewEvent} is applicable for an analytics script tag to be inserted
      * into its root models content.
      *
@@ -60,7 +65,7 @@ final class GoogleScriptTagEventListener
     {
         $trackingCode = $this->settings->get('google_analytics_key');
 
-        if (empty($trackingCode) || !static::isApplicableEvent($event)) {
+        if (empty($trackingCode) || !static::isApplicableEvent($event) || $this->shown) {
             return;
         }
 
@@ -89,5 +94,7 @@ final class GoogleScriptTagEventListener
   ga('send', 'pageview');
 JS
         );
+        
+        $this->shown = true;
     }
 }
