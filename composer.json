@@ -6,6 +6,7 @@
   "license": "MIT",
   "require": {},
   "require-dev": {
+    "stephenwf/omeka-s": "dev-develop",
     "phpunit/phpunit": "~4.2",
     "friendsofphp/php-cs-fixer": "^2.0"
   },
