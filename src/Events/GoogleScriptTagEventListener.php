@@ -3,7 +3,6 @@
 namespace GoogleAnalytics\Events;
 
 use Omeka\Settings\Settings;
-use Zend\View\Model\ModelInterface;
 use Zend\View\Model\ViewModel;
 use Zend\View\Renderer\PhpRenderer;
 use Zend\View\ViewEvent;
@@ -22,8 +21,9 @@ final class GoogleScriptTagEventListener
      * Check if the passed {@link ViewEvent} is applicable for an analytics script tag to be inserted
      * into its root models content.
      *
-     * @param ViewEvent $event The event being tested.
-     * @return bool {@code true} iff this ViewEvent can have scripts appended to its ViewModel.
+     * @param ViewEvent $event the event being tested
+     *
+     * @return bool {@code true} iff this ViewEvent can have scripts appended to its ViewModel
      */
     public static function isApplicableEvent(ViewEvent $event)
     {
@@ -35,7 +35,7 @@ final class GoogleScriptTagEventListener
 
         $children = $model->getChildren();
 
-        if (count($children) !== 1) {
+        if (1 !== count($children)) {
             return false;
         }
 
@@ -76,7 +76,7 @@ final class GoogleScriptTagEventListener
 
         // Rudimentary test for pages we want to disable Google Analytics on.
         // @todo - this needs to be more robust
-        if (strpos($childTemplate, 'admin') !== false) {
+        if (false !== strpos($childTemplate, 'admin')) {
             return;
         }
 
