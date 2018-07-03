@@ -2,7 +2,7 @@
   "name": "digirati/omeka-google-analytics-module",
   "description": "Omeka-S module to enable Google Analytics tracking code",
   "type": "omeka-s-module",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "license": "MIT",
   "require": {},
   "require-dev": {
